@@ -8,7 +8,7 @@ include("htmlHelper.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Office on Drugs and Crime</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 </head>
@@ -29,7 +29,15 @@ include("htmlHelper.php");
         'user' => 'root',
         'password' => 'Borodina2005',
         'db' => 'relational_base',]);
-        
+    ?>
+    <form style="width:300px;" class="m-2 d-flex flex-row" action="<?php echo $_SERVER['PHP_SELF'] . '?' . http_build_query($_REQUEST); ?>" method="get">
+            <?php
+            HtmlHelper::select("limit", $pagination->limits, $pagination->getLimit(), false, ['class' => 'form-select']);
+            ?>
+        <input type="hidden" name="region" value="<?= isset($regionFilter) ? htmlspecialchars($regionFilter) : '' ?>">
+        <input class="btn btn-outline-primary ms-2" type="submit" name="search" value="Поиск">
+    </form>
+    <?php
     $params = [];
     if ($db->isConnect()) {
     $wh = ""; 
