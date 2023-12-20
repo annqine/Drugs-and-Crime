@@ -1,7 +1,5 @@
 <?php
-include("pag.php");
-include("db.php");
-include("htmlHelper.php");
+include("connectToDB.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

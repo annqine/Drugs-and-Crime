@@ -90,27 +90,27 @@ class Pagination
         $s = '';
         $params = "&limit={$this->limit}";
     
-        if (isset($this->params['region']) && !empty($this->params['region'])) {
+        if (!empty($this->params['region'])) {
             $params .= "&region=" . urlencode($this->params['region']);
         }
     
         if ($first > 1) {
-            $s .= "<a class='page-link' href='?page=1{$params}&region={$this->params['region']}'>1</a>";
+            $s .= "<a class='page-link' href='?page=1{$params}'>1</a>";
         }
         if ($first > 2) {
-            $s .= "<a class='page-link' href='?page=" . ($first - 1) . "{$params}&region={$this->params['region']}'>&laquo;</a>";
+            $s .= "<a class='page-link' href='?page=" . ($first - 1) . "{$params}'>&laquo;</a>";
         }
     
         for ($i = $first; $i <= $last; $i++) {
-            $s .= "<a class='page-link " . (($i == $this->page) ? 'active' : '') . "' href='?page={$i}{$params}&region=" . (isset($this->params['region']) ? $this->params['region'] : '') . "'>{$i}</a>";
+            $s .= "<a class='page-link " . (($i == $this->page) ? 'active' : '') . "' href='?page={$i}{$params}'>{$i}</a>";
         }
     
         if ($last < $this->pageCount - 1) {
-            $s .= "<a class='page-link' href='?page=" . ($last + 1) . "{$params}&region=" . (isset($this->params['region']) ? $this->params['region'] : '') . "'>&raquo;</a>";
+            $s .= "<a class='page-link' href='?page=" . ($last + 1) . "{$params}'>&raquo;</a>";
         }
     
         if ($last < $this->pageCount) {
-            $s .= "<a class='page-link' href='?page={$this->pageCount}{$params}&region=" . (isset($this->params['region']) ? $this->params['region'] : '') . "'>{$this->pageCount}</a>";
+            $s .= "<a class='page-link' href='?page={$this->pageCount}{$params}'>{$this->pageCount}</a>";
         }
     
         return $s;
